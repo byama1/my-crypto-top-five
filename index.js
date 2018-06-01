@@ -58,10 +58,8 @@ function generateCryptoHtml(data){
 			//newobject.push(newdata[index]);
 			//newvalue.push(this);
 			//console.log("name : "+this.name);
-
-		cryptoHtml += `
-			
-			<div class="crypto-container">
+		$('.js-crypto-info').append(
+			`<div class="crypto-container">
 				<div>
 					<p id="cryptoName" >${this.name}</p>
 				</div>
@@ -78,33 +76,64 @@ function generateCryptoHtml(data){
 				<p>rank: ${this.rank}</p>
 				</div>
 			</div>
-		`;		
+		`)	
+		// cryptoHtml += `
+			
+		// 	<div class="crypto-container">
+		// 		<div>
+		// 			<p id="cryptoName" >${this.name}</p>
+		// 		</div>
+			
+		// 		<div>
+		// 			<p>Crypto Symbol: ${this.symbol}</p>
+		// 		</div>
+				
+		// 		<div>
+		// 			<p>Price:$${this.quotes.USD.price}</p>
+		// 		</div>
+				
+		// 		<div>
+		// 		<p>rank: ${this.rank}</p>
+		// 		</div>
+		// 	</div>
+		// `;		
 	});
 	//console.log(cryptoHtml);
-	renderCryptoHtml(cryptoHtml);
+	//renderCryptoHtml(cryptoHtml);
 	
 }
 
-function renderCryptoHtml(data){
-	console.log("renderCryptoHtml ran");
+//function renderCryptoHtml(data){
+	//console.log("renderCryptoHtml ran");
 	//console.log(data);
-	$('.js-crypto-info').html(data);
-}
+	//$('.js-crypto-info').html(data);
+//}
 function generateNewsHtml(data){
+	
 	let newsHtml;
 	console.log("generateNewsHtml ran");
 	console.log(data);
 	
 	$.each(data, function(index, value){
-		newsHtml += `
+		$('.js-news-info').append(
+			`
 			<div class="news-container">
 				<div>
 					<p>${this.description}</p>
 					<a href="${this.url}">${this.title}</a>
 				</div>
 			</div>
+			`)
 
-		`;
+		// newsHtml += `
+		// 	<div class="news-container">
+		// 		<div>
+		// 			<p>${this.description}</p>
+		// 			<a href="${this.url}">${this.title}</a>
+		// 		</div>
+		// 	</div>
+	
+		// `;
 	});
 
 	renderNewsHtml(newsHtml);
@@ -123,6 +152,9 @@ function watchClick(){
 	console.log(names);
 	console.log("watchClick ran");
 	getNewsApi(names);
+	$('.js-crypto-info').hide();
+	$('.js-header').hide();
+	$('.js-news-header').
 	});
 }
 
